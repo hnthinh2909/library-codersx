@@ -1,0 +1,14 @@
+h1 This is all of books in my library
+
+a(href="/library/create") Create a new book
+
+form(action="/library/search" method="GET")
+	input(type="text" name="q" placeholder="Type to search your book")
+	button Search
+
+ul
+	each book in books
+		li= book.name + " - "+ book.des 
+		a(href="/library/edit/" + book.id) Edit
+		span ---
+		a(href="/library/delete/" + book.id) Delete
