@@ -1,5 +1,5 @@
 # This repo is exercise from Coders X about create a web app to manage library
-- I used library 
+- I used tool on github: 
   + [lowdb](https://github.com/typicode/lowdb)
   + [pug](https://pugjs.org/api/getting-started.html)
   + [shortid](https://github.com/dylang/shortid)
