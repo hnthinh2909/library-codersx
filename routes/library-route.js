@@ -1,70 +1,29 @@
-const shortid = require('shortid');
-
 const express = require('express');
 const router = express.Router();
 
-const db = require("../db.js");
+const libraryController = require("../controllers/library-controller.js");
 
 // route list
-router.get("/", function(req, res) {
-	res.render("library/list", {
-		books: db.get("books").value()
-	});
-});
+router.get("/", libraryController.list);
 
 // route create
-router.get("/create", function(req, res) {
-	res.render("library/create");
-})
+router.get("/create", libraryController.create)
 
 // route create method post
-router.post("/create", function(req, res) {
-	req.body.id = shortid.generate();
-	db.get("books")
- 	  .push(req.body)
- 	  .write();
- 	res.redirect("/library");
-})
+router.post("/create", libraryController.createPost )
 
 // route search
-router.get("/search", function(req, res) {
-	var q = req.query.q;
-	var matchedBooks = db.get("books").filter(function(book){
-		return book.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
-	}).value();
-	res.render("library/list", {
-		books: matchedBooks
-	})
-})
+router.get("/search", libraryController.search)
 
 // route edit
-router.get("/edit/:id", function(req,res) {
-	let id = req.params.id;
-	// var book = db.get("books").find({id: id}).value();
-	// console.log(book);
-	res.render("library/edit", {
-		id: id
-	});
-})
+router.get("/edit/:id", libraryController.edit)
 
-router.post("/edit", function(req, res) {
-	db.get('books')
-	  .find({id: req.body.id})
-	  .assign({ name: req.body.name})
-	  .write(); 
-	res.redirect("/library");
-})
+router.post("/edit", libraryController.editPost)
 
 
 // route delete
 
-router.get("/delete/:id", function(req, res) {
-	let id = req.params.id;
-	db.get("books")
-	  .remove({id: id})
-	  .write();
-	res.redirect("back");
-});
+router.get("/delete/:id", libraryController.delete);
 
 // app.delete("/library/:id", function(req, res) {
 // 	var id = req.params.id;

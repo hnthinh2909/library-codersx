@@ -1,64 +1,25 @@
-const shortid = require('shortid');
-
 const express = require('express');
 const router = express.Router();
 
-const db = require("../db.js");
-
+const usersController = require("../controllers/users-controller");
 // route index
-router.get("/", (req, res) => {
-	res.render("users/index", {
-		users: db.get("users").value()
-	});
-})
+router.get("/", usersController.index);
 
 // route create
-router.get("/create", (req, res) => {
-	res.render("users/create");
-})
+router.get("/create", usersController.create);
 
-router.post("/create", (req, res) => {
-	req.body.id = shortid.generate();
-	db.get("users").push(req.body).write();
-	res.redirect("/users");
-})
+router.post("/create", usersController.createPost);
 
 // route edit
-router.get("/edit/:id", (req, res) => {
-	let id = req.params.id;
-	res.render("users/edit", {
-		id: id
-	});
-})
+router.get("/edit/:id", usersController.edit);
 
-router.post("/edit", (req, res) => {	
-	db.get("users")
-	  .find({id: req.body.id})
-	  .assign({name: req.body.name})
-	  .write()
-	res.redirect("/users");
-})
+router.post("/edit", usersController.editPost);
 
 // route search
-router.get("/search", (req, res) => {
-	let q = req.query.q;
-	let matchedUser = db.get("users").filter( (book) =>{
-		return book.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
-	}).value();
-	console.log(matchedUser);
-	res.render("users/index.pug", {
-		users: matchedUser
-	});
-})
+router.get("/search", usersController.search);
 
 // route delete
-router.get("/delete/:id", (req, res) => {
-	let id = req.params.id;
-	db.get("users")
-	  .remove({id: id})
-	  .write();
-	res.redirect("back");
-})
+router.get("/delete/:id", usersController.delete);
 
 
 module.exports = router;
