@@ -16,6 +16,10 @@ router.post("/create", transController.createPost);
 router.get("/delete/:id", transController.delete);
 
 
+router.get("/complete/:id", transController.complete);
+
+
+router.post("/complete", transController.completePost);
 // route search
 // router.get("/search", (req, res) => {
 // 	let q = req.query.q;

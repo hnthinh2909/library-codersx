@@ -1,0 +1,11 @@
+h1 Complete
+
+form(action="/transactions/complete", method="POST")
+	input(type="hidden", name="id", value=id)
+	select(name="complete")
+		option= "YES"
+		option= "NOT YET"
+	button Confirm
+
+each dtb in data
+	p= "This user is return the book ? - " + dtb.isComplete

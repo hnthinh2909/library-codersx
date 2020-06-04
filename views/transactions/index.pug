@@ -12,3 +12,5 @@ ul
 	each transaction in transactions
 		li= "Book title : " + transaction.bookTitle + " - Name user : " + transaction.userName
 		a(href="/transactions/delete/" + transaction.id) Delete
+		span &nbsp
+		a(href="/transactions/complete/" + transaction.id) Complete

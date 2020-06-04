@@ -35,14 +35,16 @@
   ],
   "transactions": [
     {
-      "userId": "sZc2LmGBW",
-      "bookId": "6hcWTNOlt",
-      "id": "qOcfnIkj3"
-    },
-    {
       "userId": "MZCoKPIRu",
       "bookId": "mVHQ8__Np",
-      "id": "cvIRXIv03"
+      "isComplete": "YES",
+      "id": "wBeRXrHgA"
+    },
+    {
+      "userId": "sZc2LmGBW",
+      "bookId": "6hcWTNOlt",
+      "isComplete": "not yet",
+      "id": "uilCLb6Y_"
     }
   ]
 }

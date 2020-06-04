@@ -42,3 +42,26 @@ module.exports.delete = (req, res) => {
 	  .write()
 	res.redirect("back");
 }
+
+
+module.exports.complete = (req, res) => {
+	let id = req.params.id;
+	let data = db.get("transactions").filter((complete) => {
+		return complete.id === id;
+	}).value();
+	console.log(data);
+	res.render("transactions/complete", {
+		id: id,
+		data: data
+	});
+}
+
+module.exports.completePost = (req, res) => {
+	let id = req.params.id;
+	let test = db.get("transactions")
+	  .find({id: req.body.id})
+	  .assign({isComplete: req.body.complete})
+	  .write()
+	console.log(test);
+	res.redirect("/transactions");
+}

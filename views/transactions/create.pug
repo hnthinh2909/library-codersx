@@ -7,4 +7,6 @@ form(action="/transactions/create/", method="POST")
 	select(name="bookId")
 		each book in books
 			option(value=book.id)= book.name
+	select(name="isComplete")
+		option= "not yet"
 	button Create
