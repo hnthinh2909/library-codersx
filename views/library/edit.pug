@@ -1,8 +1,23 @@
-h1 Edit
+extends ../layouts/common.pug
 
-form(action="/library/edit", method="POST")
-	input(type="hidden", name="id", value=id)
-	input(name="name", type="text", placeholder="Type new name")
-	button Edit 
+block header
+	div(cclass="ollapse navbar-collapse d-flex")
+		ul(class="navbar-nav d-flex flex-row bd-highlight mb-3")
+			li(class="nav-item active")
+				a(href="/" class="nav-link mr-4 ml-4") Home
+			li(class="nav-item")
+				a(href="/library/" class="nav-link mr-4") Library
+			li(class="nav-item")
+				a(href="/users/" class="nav-link mr-4") Users
+			li(class="nav-item")
+				a(href="/transactions/" class="nav-link mr-4") Transaction	
+				
+block content
+	h1 Edit
+
+	form(action="/library/edit", method="POST" class="form-group")
+		input(type="hidden", name="id", value=id)
+		input(name="name", type="text", placeholder="Type new name" style="width: 350px")
+		button(class="btn-primary btn") Edit 
 
 

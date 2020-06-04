@@ -1,16 +1,31 @@
-h1 Transaction
+extends ../layouts/common.pug
 
-p Welcome to transaction
+block header
+	div(cclass="ollapse navbar-collapse d-flex")
+		ul(class="navbar-nav d-flex flex-row bd-highlight mb-3")
+			li(class="nav-item active")
+				a(href="/" class="nav-link mr-4 ml-4") Home
+			li(class="nav-item")
+				a(href="/library/" class="nav-link mr-4") Library
+			li(class="nav-item")
+				a(href="/users/" class="nav-link mr-4") Users
+			li(class="nav-item")
+				a(href="/transactions/" class="nav-link mr-4") Transaction	
+				
+block content
+	h1 Transaction
 
-a(href="/transactions/create/") Create
+	p Welcome to transaction
 
-//- form(action="/transactions/search/", method="GET")
-//- 	input(type="text", name="q")
-//- 	button Search
+	a(href="/transactions/create/") Create
 
-ul
-	each transaction in transactions
-		li= "Book title : " + transaction.bookTitle + " - Name user : " + transaction.userName
-		a(href="/transactions/delete/" + transaction.id) Delete
-		span &nbsp
-		a(href="/transactions/complete/" + transaction.id) Complete
+	//- form(action="/transactions/search/", method="GET")
+	//- 	input(type="text", name="q")
+	//- 	button Search
+
+	ul
+		each transaction in transactions
+			li= "Book title : " + transaction.bookTitle + " - Name user : " + transaction.userName
+			a(href="/transactions/delete/" + transaction.id) Delete
+			span &nbsp
+			a(href="/transactions/complete/" + transaction.id) Complete

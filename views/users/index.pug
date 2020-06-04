@@ -1,14 +1,29 @@
-h1 Users
+extends ../layouts/common.pug
 
-a(href="/users/create") Create
+block header
+	div(cclass="ollapse navbar-collapse d-flex")
+		ul(class="navbar-nav d-flex flex-row bd-highlight mb-3")
+			li(class="nav-item active")
+				a(href="/" class="nav-link mr-4 ml-4") Home
+			li(class="nav-item")
+				a(href="/library/" class="nav-link mr-4") Library
+			li(class="nav-item")
+				a(href="/users/" class="nav-link mr-4") Users
+			li(class="nav-item")
+				a(href="/transactions/" class="nav-link mr-4") Transaction	
+				
+block content
+	h1 Users
 
-form(action="/users/search", method="GET")
-	input(type="text", name="q")
-	button Search
+	a(href="/users/create") Create
 
-ul
-	each user in users
-		li= "Name :" + user.name + " - Age : " + user.age
-		a(href="/users/edit/" + user.id) Edit
-		span= "----"
-		a(href="/users/delete/" + user.id) Delete
+	form(action="/users/search", method="GET", class="form-group")
+		input(type="text", name="q", style="witdh: 350px")
+		button(class="btn btn-primary ml-2") Search
+
+	ul
+		each user in users
+			li= "Name :" + user.name + " - Age : " + user.age
+			a(href="/users/edit/" + user.id) Edit
+			span= "----"
+			a(href="/users/delete/" + user.id) Delete

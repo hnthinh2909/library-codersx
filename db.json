@@ -4,21 +4,6 @@
       "name": "Only you",
       "des": "Japan",
       "id": "mVHQ8__Np"
-    },
-    {
-      "name": "Only love",
-      "des": "US",
-      "id": "6hcWTNOlt"
-    },
-    {
-      "name": "5cm/s",
-      "des": "Japan",
-      "id": "fzvS7ZBZH"
-    },
-    {
-      "name": "4ever love",
-      "des": "TH",
-      "id": "mXmUAqT9Y"
     }
   ],
   "users": [
@@ -39,12 +24,6 @@
       "bookId": "mVHQ8__Np",
       "isComplete": "YES",
       "id": "wBeRXrHgA"
-    },
-    {
-      "userId": "sZc2LmGBW",
-      "bookId": "6hcWTNOlt",
-      "isComplete": "not yet",
-      "id": "uilCLb6Y_"
     }
   ]
 }

@@ -10,8 +10,8 @@ module.exports.index = (req, res) => {
     let book = books.find(book => book.id === trans.bookId);
     let user = users.find(user => user.id === trans.userId);
     let godId = transactions.find(id => id.id === trans.id);
-    // console.log(book);
-    return {  bookTitle: book.name, userName: user.name, id: godId.id};
+    console.log(book);
+    return {  bookTitle: book.name, userName: user.name, id: godId.id };
   		});
 	res.render("transactions/index", {
 		transactions: changeTrans,
@@ -49,7 +49,7 @@ module.exports.complete = (req, res) => {
 	let data = db.get("transactions").filter((complete) => {
 		return complete.id === id;
 	}).value();
-	console.log(data);
+	// console.log(data);
 	res.render("transactions/complete", {
 		id: id,
 		data: data
@@ -62,6 +62,6 @@ module.exports.completePost = (req, res) => {
 	  .find({id: req.body.id})
 	  .assign({isComplete: req.body.complete})
 	  .write()
-	console.log(test);
+	// console.log(test);
 	res.redirect("/transactions");
 }

@@ -1,12 +1,30 @@
-h1 Create
+extends ../layouts/common.pug
 
-form(action="/transactions/create/", method="POST")
-	select(name="userId")
-		each user in users
-			option(value=user.id)= user.name
-	select(name="bookId")
-		each book in books
-			option(value=book.id)= book.name
-	select(name="isComplete")
-		option= "not yet"
-	button Create
+block header
+	div(cclass="ollapse navbar-collapse d-flex")
+		ul(class="navbar-nav d-flex flex-row bd-highlight mb-3")
+			li(class="nav-item active")
+				a(href="/" class="nav-link mr-4 ml-4") Home
+			li(class="nav-item")
+				a(href="/library/" class="nav-link mr-4") Library
+			li(class="nav-item")
+				a(href="/users/" class="nav-link mr-4") Users
+			li(class="nav-item")
+				a(href="/transactions/" class="nav-link mr-4") Transaction	
+				
+block content
+	h1 Create
+
+	form(action="/transactions/create/", method="POST", class="form-group")
+		b User:
+		select(name="userId" class="form-control" style="width: 350px")
+			each user in users
+				option(value=user.id)= user.name
+		b Book:
+		select(name="bookId" class="form-control" style="width: 350px")
+			each book in books
+				option(value=book.id)= book.name
+		b Complete:
+		select(name="isComplete" class="form-control" style="width: 350px")
+			option= "not yet"
+		button(class="btn btn-primary") Create
