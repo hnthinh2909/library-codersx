@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const favicon = require('serve-favicon');
+const path = require('path');
+const app = express();
 
 const usersController = require("../controllers/users-controller");
 // route index
@@ -20,6 +23,5 @@ router.get("/search", usersController.search);
 
 // route delete
 router.get("/delete/:id", usersController.delete);
-
 
 module.exports = router;

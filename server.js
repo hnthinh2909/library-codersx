@@ -3,6 +3,10 @@ const app = express();
 
 const bodyParser = require('body-parser');
 
+const favicon = require('serve-favicon')
+const path = require('path')
+
+
 const libraryRoute = require("./routes/library-route.js");
 const usersRoute = require("./routes/users-route.js");
 const transactionRoute = require("./routes/transactions-route.js");
@@ -29,6 +33,9 @@ app.use("/library", libraryRoute);
 app.use("/users", usersRoute);
 
 app.use("/transactions", transactionRoute);
+
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(path.join(__dirname, 'public/img', 'favicon.ico')));
 
 // to log port we using
 app.listen(port, function() {
