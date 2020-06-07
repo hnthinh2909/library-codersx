@@ -1,31 +1,29 @@
 extends ../layouts/common.pug
-
-block header
-	div(cclass="ollapse navbar-collapse d-flex")
-		ul(class="navbar-nav d-flex flex-row bd-highlight mb-3")
-			li(class="nav-item active")
-				a(href="/" class="nav-link mr-4 ml-4") Home
-			li(class="nav-item")
-				a(href="/library/" class="nav-link mr-4") Library
-			li(class="nav-item")
-				a(href="/users/" class="nav-link mr-4") Users
-			li(class="nav-item")
-				a(href="/transactions/" class="nav-link mr-4") Transaction	
-				
+                
 block content
-	h1 Transaction
+    h1.ml-5 Transaction
 
-	p Welcome to transaction
+    a.btn.btn-primary.ml-5(href="/transactions/create/") Create
 
-	a(href="/transactions/create/") Create
+    //- form(action="/transactions/search/", method="GET")
+    //-     input(type="text", name="q")
+    //-     button Search
 
-	//- form(action="/transactions/search/", method="GET")
-	//- 	input(type="text", name="q")
-	//- 	button Search
+    table.table.ml-5.mt-2(style="width: 1500px")
+        thead.thead-dark
+            tr
+                th(scope='col') Title
+                th(scope='col') User
+                th(scope='col') Action
+        tbody
+            each transaction in transactions
+                tr
+                    td= transaction.bookTitle
+                    td= transaction.userName
+                    td
+                        a(href="/transactions/delete/" + transaction.id) Delete
+                        span &nbsp;
+                        span &nbsp;
+                        span &nbsp;
+                        a(href="/transactions/complete/" + transaction.id) Complete
 
-	ul
-		each transaction in transactions
-			li= "Book title : " + transaction.bookTitle + " - Name user : " + transaction.userName
-			a(href="/transactions/delete/" + transaction.id) Delete
-			span &nbsp
-			a(href="/transactions/complete/" + transaction.id) Complete

@@ -13,6 +13,28 @@ module.exports.create = (req, res) => {
 
 module.exports.createPost = (req, res) => {
 	req.body.id = shortid.generate();
+	let errors = [];
+
+	if(!req.body.name) {
+		errors.push("Name is required!");
+	}
+
+	if(!req.body.number) {
+		errors.push("Phone number is required!");
+	}
+
+	if(req.body.name.length > 30) {
+		errors.push("Your name is long over 30 character!")
+	}
+
+	if(errors.length) {
+		res.render("users/create", {
+			errors: errors,
+			values: req.body
+		})
+		return;
+	}
+
 	db.get("users").push(req.body).write();
 	res.redirect("/users");
 }
@@ -34,12 +56,14 @@ module.exports.editPost = (req, res) => {
 
 module.exports.search = (req, res) => {
 	let q = req.query.q;
-	let matchedUser = db.get("users").filter( (book) =>{
-		return book.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
+	let matchedName = db.get("users").filter( (user) =>{
+		return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
 	}).value();
-	console.log(matchedUser);
+	let matchedPhone = db.get("users").filter( (phone) => {
+		return phone.number.indexOf(q) !== -1;
+	})
 	res.render("users/index.pug", {
-		users: matchedUser
+		users: matchedName
 	});
 }
 

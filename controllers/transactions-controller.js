@@ -10,7 +10,6 @@ module.exports.index = (req, res) => {
     let book = books.find(book => book.id === trans.bookId);
     let user = users.find(user => user.id === trans.userId);
     let godId = transactions.find(id => id.id === trans.id);
-    console.log(book);
     return {  bookTitle: book.name, userName: user.name, id: godId.id };
   		});
 	res.render("transactions/index", {

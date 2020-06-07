@@ -1,29 +1,28 @@
 extends ../layouts/common.pug
-
-block header
-	div(cclass="ollapse navbar-collapse d-flex")
-		ul(class="navbar-nav d-flex flex-row bd-highlight mb-3")
-			li(class="nav-item active")
-				a(href="/" class="nav-link mr-4 ml-4") Home
-			li(class="nav-item")
-				a(href="/library/" class="nav-link mr-4") Library
-			li(class="nav-item")
-				a(href="/users/" class="nav-link mr-4") Users
-			li(class="nav-item")
-				a(href="/transactions/" class="nav-link mr-4") Transaction	
-				
+            
 block content
-	h1 This is all of books in my library
+    h1.ml-5 This is all of books in my library
 
-	a(href="/library/create") Create a new book
+    a.ml-5.btn.btn-primary(href="/library/create") Create
 
-	form(action="/library/search" method="GET" class="form-group")
-		input(type="text" name="q" placeholder="Type to search your book" style="width: 350px")
-		button(class="btn btn-primary ml-2") Search
-
-	ul
-		each book in books
-			li= book.name + " - "+ book.des 
-			a(href="/library/edit/" + book.id) Edit
-			span ---
-			a(href="/library/delete/" + book.id) Delete
+    form.mt-2(action="/library/search" method="GET" class="form-inline")
+        .form-group
+            input.form-control.ml-5(type="text" name="q" placeholder="Type to search your book" style="width: 600px")
+            button(class="btn btn-primary ml-2") Search
+    table.table.ml-5(style="width: 1500px")
+        thead.thead-dark
+            tr
+                th(scope='col') Title
+                th(scope='col') Description
+                th(scope='col') Action
+        tbody
+            each book in books
+                tr
+                    td= book.name
+                    td= book.des
+                    td
+                        a(href="/library/edit/" + book.id) Edit
+                        span &nbsp;
+                        span &nbsp;
+                        span &nbsp;
+                        a(href="/library/delete/" + book.id) Delete

@@ -12,11 +12,31 @@ module.exports.create = function(req, res) {
 };
 
 module.exports.createPost = function(req, res) {
-	req.body.id = shortid.generate();
-	db.get("books")
- 	  .push(req.body)
- 	  .write();
- 	res.redirect("/library");
+ 	req.body.id = shortid.generate();
+	let errors = [];
+
+	if(!req.body.name) {
+		errors.push("Name is required!");
+	}
+
+	if(!req.body.des) {
+		errors.push("Descreption is required!");
+	}
+
+	if(req.body.name.length > 30) {
+		errors.push("Your name is long over 30 character!")
+	}
+
+	if(errors.length) {
+		res.render("library/create", {
+			errors: errors,
+			values: req.body
+		})
+		return;
+	}
+
+	db.get("books").push(req.body).write();
+	res.redirect("/library");
 }
 
 module.exports.search = function(req, res) {

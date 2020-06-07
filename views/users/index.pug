@@ -1,29 +1,28 @@
 extends ../layouts/common.pug
-
-block header
-	div(cclass="ollapse navbar-collapse d-flex")
-		ul(class="navbar-nav d-flex flex-row bd-highlight mb-3")
-			li(class="nav-item active")
-				a(href="/" class="nav-link mr-4 ml-4") Home
-			li(class="nav-item")
-				a(href="/library/" class="nav-link mr-4") Library
-			li(class="nav-item")
-				a(href="/users/" class="nav-link mr-4") Users
-			li(class="nav-item")
-				a(href="/transactions/" class="nav-link mr-4") Transaction	
-				
+            
 block content
-	h1 Users
+    h1.ml-5 Users
 
-	a(href="/users/create") Create
+    a.btn.btn-primary.ml-5(href="/users/create") Create
 
-	form(action="/users/search", method="GET", class="form-group")
-		input(type="text", name="q", style="witdh: 350px")
-		button(class="btn btn-primary ml-2") Search
-
-	ul
-		each user in users
-			li= "Name :" + user.name + " - Age : " + user.age
-			a(href="/users/edit/" + user.id) Edit
-			span= "----"
-			a(href="/users/delete/" + user.id) Delete
+    form.ml-5.mt-2(action="/users/search", method="GET", class="form-inline")
+        .form-group
+            input.form-control(type="text", placeholder="Type to search user", name="q", style="width: 600px")
+            button(class="btn btn-primary ml-2") Search
+            
+    table.table.ml-5(style="width: 1500px")
+        thead.thead-dark
+            tr
+                th(scope='col') Title
+                th(scope='col') Phone
+                th(scope='col') Action
+        tbody
+            each user in users
+                tr
+                    td= user.name
+                    td= user.number
+                    td
+                        a(href="/users/edit/" + user.id) Edit
+                        span &nbsp;
+                        span &nbsp;
+                        a(href="/users/delete/" + user.id) Delete

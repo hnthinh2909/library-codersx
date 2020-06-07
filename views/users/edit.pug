@@ -1,22 +1,11 @@
 extends ../layouts/common.pug
-
-block header
-	div(cclass="ollapse navbar-collapse d-flex")
-		ul(class="navbar-nav d-flex flex-row bd-highlight mb-3")
-			li(class="nav-item active")
-				a(href="/" class="nav-link mr-4 ml-4") Home
-			li(class="nav-item")
-				a(href="/library/" class="nav-link mr-4") Library
-			li(class="nav-item")
-				a(href="/users/" class="nav-link mr-4") Users
-			li(class="nav-item")
-				a(href="/transactions/" class="nav-link mr-4") Transaction	
-				
+			
 block content
-	h1 Edit
+	h1.ml-5 Edit
 
-	form(action="/users/edit", method="POST", class="form-group")
-		input(type="hidden", name="id", value=id)
-		input(type="text", name="name", placeholder="Type new name" style="width: 350px")
-		//- input(type="number", name="age", placeholder="Type new age")
-		button Edit
+	form.ml-5(action="/users/edit", method="POST", class="form-inline")
+		.form-group
+			input(type="hidden", name="id", value=id)
+			input.form-control(type="text", name="name", placeholder="Type new name" style="width: 350px")
+			//- input(type="number", name="age", placeholder="Type new age")
+		button.btn.btn-primary Edit

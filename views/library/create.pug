@@ -1,25 +1,17 @@
 extends ../layouts/common.pug
-
-block header
-	div(cclass="ollapse navbar-collapse d-flex")
-		ul(class="navbar-nav d-flex flex-row bd-highlight mb-3")
-			li(class="nav-item active")
-				a(href="/" class="nav-link mr-4 ml-4") Home
-			li(class="nav-item")
-				a(href="/library/" class="nav-link mr-4") Library
-			li(class="nav-item")
-				a(href="/users/" class="nav-link mr-4") Users
-			li(class="nav-item")
-				a(href="/transactions/" class="nav-link mr-4") Transaction	
-				
+			
 block content
-	h1 Create
+	h1.ml-5 Create
 
-	p Type to title and description about your book
+	p.ml-5 Type a title and description about your book
 
-	form(action="/library/create" method="POST" class="form-group")
-		span Name:
-		input(name="name" placeholder="Type name of book" class="form-control" style="width: 350px")
-		span Description:
-		input(name="des" placeholder="Type description of book" class="form-control" style="width: 350px")
-		button(class="btn btn-primary") Create 
+	if errors
+		each error in errors
+			.alert.alert-danger.ml-5(style="width:400px")= error
+
+	form.ml-5(action="/library/create" method="POST" class="form-group")
+		b Name:
+		input(name="name" placeholder="Type name of book" class="form-control" style="width: 600px")
+		b Description:
+		input(name="des" placeholder="Type description of book" class="form-control" style="width: 600px")
+		button.mt-2(class="btn btn-primary") Create 
