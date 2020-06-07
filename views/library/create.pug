@@ -11,7 +11,7 @@ block content
 
 	form.ml-5(action="/library/create" method="POST" class="form-group")
 		b Name:
-		input(name="name" placeholder="Type name of book" class="form-control" style="width: 600px")
+		input(name="name" placeholder="Type name of book" class="form-control" style="width: 600px" value=values ? values.name : "")
 		b Description:
-		input(name="des" placeholder="Type description of book" class="form-control" style="width: 600px")
+		input(name="des" placeholder="Type description of book" class="form-control" style="width: 600px" value=values ? values.des : "")
 		button.mt-2(class="btn btn-primary") Create 

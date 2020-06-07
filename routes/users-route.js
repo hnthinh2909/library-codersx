@@ -4,6 +4,7 @@ const favicon = require('serve-favicon');
 const path = require('path');
 const app = express();
 
+const usersValidate = require("../validate/users-validate");
 const usersController = require("../controllers/users-controller");
 // route index
 router.get("/", usersController.index);
@@ -11,7 +12,7 @@ router.get("/", usersController.index);
 // route create
 router.get("/create", usersController.create);
 
-router.post("/create", usersController.createPost);
+router.post("/create", usersValidate.createPost, usersController.createPost);
 
 // route edit
 router.get("/edit/:id", usersController.edit);

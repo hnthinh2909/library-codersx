@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+const libraryValidate = require("../validate/library-validate.js")
 const libraryController = require("../controllers/library-controller.js");
 
 // route list
@@ -10,7 +11,7 @@ router.get("/", libraryController.list);
 router.get("/create", libraryController.create)
 
 // route create method post
-router.post("/create", libraryController.createPost )
+router.post("/create", libraryValidate.createPost, libraryController.createPost )
 
 // route search
 router.get("/search", libraryController.search)
