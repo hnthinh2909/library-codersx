@@ -2,24 +2,25 @@ const express = require('express');
 const router = express.Router();
 
 const transController = require("../controllers/transactions-controller");
+const countCookie = require("../cookie-middleware/cookie-check.js");
 
 // route index
-router.get("/", transController.index);
+router.get("/", countCookie.checkCookie, transController.index);
 
 // route create
-router.get("/create", transController.create);
+router.get("/create", countCookie.checkCookie, transController.create);
 
-router.post("/create", transController.createPost);
+router.post("/create", countCookie.checkCookie, transController.createPost);
 
 
 // route delete
-router.get("/delete/:id", transController.delete);
+router.get("/delete/:id", countCookie.checkCookie, transController.delete);
 
 
-router.get("/complete/:id", transController.complete);
+router.get("/complete/:id", countCookie.checkCookie, transController.complete);
 
 
-router.post("/complete", transController.completePost);
+router.post("/complete", countCookie.checkCookie, transController.completePost);
 // route search
 // router.get("/search", (req, res) => {
 // 	let q = req.query.q;
