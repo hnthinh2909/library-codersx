@@ -5,22 +5,22 @@ const transController = require("../controllers/transactions-controller");
 const countCookie = require("../cookie-middleware/cookie-check.js");
 
 // route index
-router.get("/", countCookie.checkCookie, transController.index);
+router.get("/", transController.index);
 
 // route create
-router.get("/create", countCookie.checkCookie, transController.create);
+router.get("/create", transController.create);
 
-router.post("/create", countCookie.checkCookie, transController.createPost);
+router.post("/create", transController.createPost);
 
 
 // route delete
-router.get("/delete/:id", countCookie.checkCookie, transController.delete);
+router.get("/delete/:id", transController.delete);
 
 
-router.get("/complete/:id", countCookie.checkCookie, transController.complete);
+router.get("/complete/:id", transController.complete);
 
 
-router.post("/complete", countCookie.checkCookie, transController.completePost);
+router.post("/complete", transController.completePost);
 // route search
 // router.get("/search", (req, res) => {
 // 	let q = req.query.q;

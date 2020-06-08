@@ -7,21 +7,21 @@ const countCookie = require("../cookie-middleware/cookie-check.js");
 
 
 // route list
-router.get("/", countCookie.checkCookie, libraryController.list);
+router.get("/", libraryController.list);
 
 // route create
-router.get("/create", countCookie.checkCookie, libraryController.create)
+router.get("/create", libraryController.create)
 
 // route create method post
-router.post("/create", countCookie.checkCookie, libraryValidate.createPost, libraryController.createPost )
+router.post("/create", libraryValidate.createPost, libraryController.createPost )
 
 // route search
-router.get("/search", countCookie.checkCookie, libraryController.search)
+router.get("/search", libraryController.search)
 
 // route edit
-router.get("/edit/:id", countCookie.checkCookie, libraryController.edit)
+router.get("/edit/:id", libraryController.edit)
 
-router.post("/edit", countCookie.checkCookie, libraryController.editPost)
+router.post("/edit", libraryController.editPost)
 
 
 // route delete
