@@ -1,4 +1,6 @@
 const md5 = require('md5');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 const db = require("../db.js");
 
 module.exports.login =  function(req, res) {
@@ -10,8 +12,16 @@ module.exports.loginPost = function(req, res, next) {
 	let password = req.body.password; 
 	let hashedPwd = md5(password);
 
-	let user = db.get("users").find({email: email}).value();
 
+	// const myPlaintextPassword = 's0/\/\P4$$w0rD';
+	// const someOtherPlaintextPassword = 'not_bacon';
+	// const hash = bcrypt.hashSync(myPlaintextPassword, saltRounds);
+	// const loadHash = bcrypt.compareSync(myPlaintextPassword, hash);
+	// console.log(hash);
+	// console.log(loadHash);
+
+
+	let user = db.get("users").find({email: email}).value();
 	if(!user) {
 		res.render("auth/login", {
 			errors: ["Your email is not exist!"],
