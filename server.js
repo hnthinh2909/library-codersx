@@ -13,6 +13,7 @@ const transactionRoute = require("./routes/transactions-route.js");
 const loginRoute = require("./routes/login-route.js");
 const loginControllers = require("./controllers/login-controller.js");
 
+
 const authRequire = require("./auth-middleware/login");
 
 const port = 3000;
@@ -29,7 +30,7 @@ app.set("views", "./views");
 app.use("/auth", loginRoute);
 
 // route index
-app.get("/", function(req, res) {
+app.get("/", authRequire.requireAuth, function(req, res) {
 	res.render("library/index");
 })
 
@@ -37,7 +38,7 @@ app.use("/library", authRequire.requireAuth, libraryRoute);
 
 app.use("/users", authRequire.requireAuth, usersRoute);
 
-app.use("/transactions", authRequire.requireAuth, transactionRoute);
+app.use("/transactions", authRequire.requireAuth, authRequire.isAdmin, transactionRoute);
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public/img', 'favicon.ico')));

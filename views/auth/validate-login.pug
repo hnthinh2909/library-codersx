@@ -6,6 +6,12 @@ block content
     if errors
         each error in errors
             .alert.alert-danger.ml-5(style="width:400px")= error
+
+    //- each check in captcha
+    //-     .alert.alert-dark.ml-5.text-center.font-weight-bold(style="width:150px")= check
+
+            
     a#myButton.ml-5.btn.btn-primary(href="/auth/login") Back to Login
 
-    script(src="./waitLogin.js")
+    
+    

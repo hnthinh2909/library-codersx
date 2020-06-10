@@ -17,19 +17,16 @@
       "number": "0899236266",
       "email": "hnthinh2909@gmail.com",
       "password": "$2b$10$hgjgujM6wTSNUc9xRui8J..rYOZAzlqbTDl1fopM9U0a3SbdOdCqW",
-      "id": "JcG2XLOjH"
+      "id": "JcG2XLOjH",
+      "isAdmin": true
     },
     {
       "name": "Thu Ha",
       "number": "0388315849",
       "email": "thuhafriendly@gmail.com",
-      "password": "$2b$10$ZdpXG181MiDPg5s1tCBy7egQZ9sMsgZg3n9DAZoUZ/g4fh5qYSmrC",
-      "id": "VkHIf5_MA"
-    },
-    {
-      "name": "5cm/s",
-      "number": "0899236266",
-      "id": "8YgFPqXxL"
+      "password": "$2b$10$hgjgujM6wTSNUc9xRui8J..rYOZAzlqbTDl1fopM9U0a3SbdOdCqW",
+      "id": "VkHIf5_MA",
+      "isAdmin": false
     }
   ],
   "transactions": [
@@ -45,5 +42,8 @@
       "isComplete": "not yet",
       "id": "QZ0tYaY-x"
     }
+  ],
+  "captcha": [
+    "3x5EBn"
   ]
 }
