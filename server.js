@@ -21,7 +21,7 @@ const port = 3000;
 // to read file from db.json
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
-app.use(cookieParser());
+app.use(cookieParser("asdasdasd123"));
 
 // to set default direct of main folder
 app.set("view engine", "pug");

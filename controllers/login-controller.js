@@ -2,6 +2,7 @@ const md5 = require('md5');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const db = require("../db.js");
+const cookieParser = require('cookie-parser')
 
 let countLogin = 0;
 
@@ -60,6 +61,7 @@ module.exports.loginPost = function(req, res, next) {
 		return;
 	}
 
-	res.cookie("userId", user.id)
+	res.cookie("userId", user.id, {signed: true});
+	console.dir(req.signedCookies.userId);
 	res.redirect("/");
 }
