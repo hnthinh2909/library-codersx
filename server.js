@@ -8,6 +8,8 @@ const favicon = require('serve-favicon')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 
+
+const productsRoute = require("./routes/products-route.js");
 const libraryRoute = require("./routes/library-route.js");
 const usersRoute = require("./routes/users-route.js");
 const transactionRoute = require("./routes/transactions-route.js");
@@ -34,6 +36,8 @@ app.use("/auth", loginRoute);
 app.get("/", authRequire.requireAuth, function(req, res) {
 	res.render("library/index");
 })
+
+app.use("/products", authRequire.requireAuth, productsRoute);
 
 app.use("/library", authRequire.requireAuth, libraryRoute);
 

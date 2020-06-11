@@ -4,6 +4,9 @@ const saltRounds = 10;
 const db = require("../db.js");
 const cookieParser = require('cookie-parser')
 
+// use --inspect to debugger
+
+
 // sendgrid
 // const sgMail = require('@sendgrid/mail');
 // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
