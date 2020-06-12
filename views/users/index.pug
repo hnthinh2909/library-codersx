@@ -3,8 +3,6 @@ extends ../layouts/common.pug
 block content
     h1.ml-5 Users
 
-    a.btn.btn-primary.ml-5(href="/users/create") Create
-
     form.ml-5.mt-2(action="/users/search", method="GET", class="form-inline")
         .form-group
             input.form-control(type="text", placeholder="Type to search user", name="q", style="width: 600px")

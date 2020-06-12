@@ -4,6 +4,9 @@ const db = require("../db.js");
 const multer  = require('multer')
 const upload = multer({ dest: './public/uploads' })
 
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 module.exports.index = (req, res) => {
 	res.render("users/index", {
 		users: db.get("users").value()
@@ -17,9 +20,10 @@ module.exports.create = (req, res) => {
 module.exports.createPost = (req, res) => {
 	req.body.id = shortid.generate();
 	req.body.avatar = req.file.path.split("/").slice(1).join("/");
-
+	const hash = bcrypt.hashSync(req.body.password, saltRounds);
+	req.body.password = hash;
 	db.get("users").push(req.body).write();
-	res.redirect("/users");
+	res.redirect("/");
 }
 
 module.exports.edit = (req, res) => {

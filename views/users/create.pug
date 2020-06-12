@@ -8,12 +8,17 @@ block content
             .alert.alert-danger= error
 
   
-    form(action="/users/create" method="POST" enctype="multipart/form-data")
+    form.ml-5.mr-5(action="/users/create" method="POST" enctype="multipart/form-data")
         .form-group
-            label(for="name") Name
-            input#name.form-control(name="name", type="text", value=values ? values.name : "")
-            label(for="phone") Phone
-            input#phone.form-control(name="number", type="text", value=values ? values.number : "")
+            label.mb-0(for="name") Name
+            input#name.form-control(name="name", type="text", value=values ? values.name : "" style="width: 500px")
+            label.mt-3.mb-0(for="email") Email
+            input#email.form-control(name="email", type="email", value=values ? values.number : "" style="width: 500px")
+            label.mt-3.mb-0(for="password") Password
+            input#password.form-control(name="password", type="password", value=values ?values.number : "" style="width: 500px")
+            label.mt-3.mb-0(for="phone") Phone
+            input#phone.form-control(name="number", type="text", value=values ? values.number : "" style="width: 500px")
+            input.form-control(name="isAdmin", type="hidden", value=false)
         .form-group
             label(for="avatar") Avatar
             input#avatar.form-control-file(name="avatar", type="file")

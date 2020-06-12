@@ -30,16 +30,20 @@
       "isAdmin": false
     },
     {
-      "name": "123",
+      "name": "Thinh",
+      "email": "ethan1@gmail.com",
+      "password": "$2b$10$1.ZRHjA8IY5D6k05OwqjQOV5q/8Dzhes0Ta0RNA3DApAtI8b8fXEe",
       "number": "123",
-      "id": "WyhjhmAsK",
-      "avatar": "uploads/7ef561263f2d31321872facc4a8b03a6"
+      "id": "6U8EzlrS4",
+      "avatar": "uploads/e35d9854c8f85f69c56281ec306041b1"
     },
     {
-      "name": "5cm/s",
-      "number": "8594",
-      "id": "h6n1jGBkH",
-      "avatar": "uploads/8bfbdc03d78605d49a57813c68e56722"
+      "name": "Thoi",
+      "email": "thoi1@gmail.com",
+      "password": "$2b$10$obghJQZFA0eqwZhfD3bfB.EaLPv6sqpq6O90j3kR8jMrFE8hDCxmO",
+      "number": "0890",
+      "id": "40Ws6UmG2",
+      "avatar": "uploads/9f7af84f1e6213c9a6c1e66217842a3b"
     }
   ],
   "transactions": [

@@ -54,7 +54,7 @@ app.use("/products", authRequire.requireAuth, productsRoute);
 
 app.use("/library", authRequire.requireAuth, libraryRoute);
 
-app.use("/users", authRequire.requireAuth, usersRoute);
+app.use("/users", usersRoute);
 
 app.use("/transactions", authRequire.requireAuth, authRequire.isAdmin, transactionRoute);
 

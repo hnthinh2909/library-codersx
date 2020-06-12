@@ -10,11 +10,11 @@ const upload = multer({ dest: './public/uploads/' });
 
 const usersValidate = require("../validate/users-validate");
 const usersController = require("../controllers/users-controller");
-const countCookie = require("../cookie-middleware/cookie-check.js");
-const authMiddleware = require("../auth-middleware/login.js");
+const cookieMiddleware = require("../cookie-middleware/cookie-check.js");
+const authRequire = require("../auth-middleware/login.js");
 
 // route index
-router.get("/",	usersController.index);
+router.get("/",	authRequire.requireAuth, authRequire.isAdmin, usersController.index);
 
 // route create
 router.get("/create",	usersController.create);
@@ -22,14 +22,14 @@ router.get("/create",	usersController.create);
 router.post("/create",	upload.single('avatar'), usersValidate.createPost, usersController.createPost);
 
 // route edit
-router.get("/edit/:id",	usersController.edit);
+router.get("/edit/:id",	authRequire.requireAuth, authRequire.isAdmin, usersController.edit);
 
-router.post("/edit",	usersController.editPost);
+router.post("/edit", authRequire.requireAuth, authRequire.isAdmin, usersController.editPost);
 
 // route search
-router.get("/search",	usersController.search);
+router.get("/search", authRequire.requireAuth, authRequire.isAdmin, usersController.search);
 
 // route delete
-router.get("/delete/:id",	usersController.delete);
+router.get("/delete/:id", authRequire.requireAuth, authRequire.isAdmin, usersController.delete);
 
 module.exports = router;

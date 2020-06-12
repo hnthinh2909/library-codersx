@@ -22,7 +22,7 @@ html
                         a.nav-item.nav-link(href='/products/') Products
                     
             if user
-                span.navbar-text.mr-3= user.name
+                span.navbar-text.mr-3= "Hi, " + user.name
                 .dropdown
                     a#dropdown01.nav-link.dropdown-toggle(href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Settings
                     .dropdown-menu
