@@ -23,7 +23,8 @@ html
                         a.nav-item.nav-link(href='/profile/') Profile
             
             if user
-                p= user.name
+                span.navbar-text.mr-3= user.name
+                a.btn.btn-sm.btn-outline-primary(href="/logout/") Log out
 
 
 

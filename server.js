@@ -38,6 +38,14 @@ app.get("/", authRequire.requireAuth, function(req, res) {
 	res.render("library/index");
 })
 
+app.get("/logout", function(req, res, next) {
+	console.log(req.cookie);
+	res.cookie("userId", {maxAge: 0})
+	next();
+}, function(req, res) {
+	res.redirect("/auth/login")
+})
+
 app.use("/profile", authRequire.requireAuth, profileRoute);
 
 app.use("/products", authRequire.requireAuth, productsRoute);
