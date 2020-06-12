@@ -24,6 +24,7 @@ module.exports.login =  function(req, res) {
 	res.render("auth/login");
 }
 
+
 module.exports.loginPost = function(req, res, next) {
 	let email = req.body.email;
 	let password = req.body.password; 
