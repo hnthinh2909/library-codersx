@@ -14,8 +14,9 @@ const libraryRoute = require("./routes/library-route.js");
 const usersRoute = require("./routes/users-route.js");
 const transactionRoute = require("./routes/transactions-route.js");
 const loginRoute = require("./routes/login-route.js");
-const loginControllers = require("./controllers/login-controller.js");
+const profileRoute = require("./routes/profile-route.js");
 
+const loginControllers = require("./controllers/login-controller.js");
 
 const authRequire = require("./auth-middleware/login");
 
@@ -37,6 +38,8 @@ app.get("/", authRequire.requireAuth, function(req, res) {
 	res.render("library/index");
 })
 
+app.use("/profile", authRequire.requireAuth, profileRoute);
+
 app.use("/products", authRequire.requireAuth, productsRoute);
 
 app.use("/library", authRequire.requireAuth, libraryRoute);
@@ -52,3 +55,7 @@ app.use(favicon(path.join(__dirname, 'public/img', 'favicon.ico')));
 app.listen(port, function() {
 	console.log("Server listening on port " + port)
 });
+
+// Lấy dữ liệu để thay đổi trong route profile
+// Dùng multer để lưu vị trí ảnh
+// Dùng cloudinary cho việc lưu ảnh

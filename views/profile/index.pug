@@ -1,0 +1,16 @@
+extends ../layouts/common.pug
+
+block content
+    h1.ml-5 Profile
+
+    .mx-auto.d-flex.justify-content-center.mt-5
+        .media
+            img.img-fluid.mr-5.rounded-circle(src='https://loremflickr.com/240/240', alt='Generic placeholder image')
+            .media-body.ml-5
+                .ml-5.d-flex.flex-column
+                    label 
+                        b Name : 
+                        span= name
+                    label 
+                        b Email : 
+                        span= email

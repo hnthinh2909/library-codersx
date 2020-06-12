@@ -19,11 +19,15 @@ html
                         a.nav-item.nav-link(href='/transactions/') Transactions
                     li.nav-icon
                         a.nav-item.nav-link(href='/products/') Products
-
+                    li.nav-icon
+                        a.nav-item.nav-link(href='/profile/') Profile
+            
             if user
                 p= user.name
 
-        .alert.alert-danger.ml-5.text-center(style="width: 550px") WARNING: If you're not admin, you can't use Transactions
+
+
+        .alert.alert-danger.ml-5.text-center.mt-2(style="width: 550px") WARNING: If you're not admin, you can't use Transactions
         
         block content
             

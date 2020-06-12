@@ -10,15 +10,17 @@ block content
             input.form-control(type="text", placeholder="Type to search user", name="q", style="width: 600px")
             button(class="btn btn-primary ml-2") Search
             
-    table.table.ml-5(style="width: 1500px")
-        thead.thead-dark
-            tr
-                th(scope='col') Title
-                th(scope='col') Phone
-                th(scope='col') Action
+    table.table
+        tr
+            th Avatar
+            th Title
+            th Phone
+            th Action
         tbody
             each user in users
                 tr
+                    td
+                        img.rounded-circle(src=user.avatar style="width:50px ")
                     td= user.name
                     td= user.number
                     td

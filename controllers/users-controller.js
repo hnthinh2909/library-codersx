@@ -1,6 +1,9 @@
 const shortid = require('shortid');
 const db = require("../db.js");
 
+const multer  = require('multer')
+const upload = multer({ dest: './public/uploads' })
+
 module.exports.index = (req, res) => {
 	res.render("users/index", {
 		users: db.get("users").value()
@@ -13,8 +16,7 @@ module.exports.create = (req, res) => {
 
 module.exports.createPost = (req, res) => {
 	req.body.id = shortid.generate();
-	
-	console.log(res.locals);
+	req.body.avatar = req.file.path.split("/").slice(1).join("/");
 
 	db.get("users").push(req.body).write();
 	res.redirect("/users");

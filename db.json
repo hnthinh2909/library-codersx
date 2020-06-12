@@ -18,6 +18,7 @@
       "email": "hnthinh2909@gmail.com",
       "password": "$2b$10$hgjgujM6wTSNUc9xRui8J..rYOZAzlqbTDl1fopM9U0a3SbdOdCqW",
       "id": "JcG2XLOjH",
+      "avatar": "uploads/7ef561263f2d31321872facc4a8b03a6",
       "isAdmin": true
     },
     {
@@ -27,6 +28,18 @@
       "password": "$2b$10$hgjgujM6wTSNUc9xRui8J..rYOZAzlqbTDl1fopM9U0a3SbdOdCqW",
       "id": "VkHIf5_MA",
       "isAdmin": false
+    },
+    {
+      "name": "123",
+      "number": "123",
+      "id": "WyhjhmAsK",
+      "avatar": "uploads/7ef561263f2d31321872facc4a8b03a6"
+    },
+    {
+      "name": "5cm/s",
+      "number": "8594",
+      "id": "h6n1jGBkH",
+      "avatar": "uploads/8bfbdc03d78605d49a57813c68e56722"
     }
   ],
   "transactions": [

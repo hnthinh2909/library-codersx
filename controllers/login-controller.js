@@ -95,6 +95,5 @@ module.exports.loginPost = function(req, res, next) {
 	}
 
 	res.cookie("userId", user.id, {signed: true});
-	console.dir(req.signedCookies.userId);
 	res.redirect("/");
 }
