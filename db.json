@@ -1,7 +1,7 @@
 {
   "books": [
     {
-      "name": "I love you babe",
+      "name": "Toi thay hoa vang tren co xanh",
       "des": "Japan",
       "id": "CeUMjcp9b"
     },
@@ -13,13 +13,13 @@
   ],
   "users": [
     {
-      "name": "Ngoc Thinh",
-      "number": "0899236266",
       "email": "hnthinh2909@gmail.com",
       "password": "$2b$10$hgjgujM6wTSNUc9xRui8J..rYOZAzlqbTDl1fopM9U0a3SbdOdCqW",
       "id": "JcG2XLOjH",
-      "avatar": "http://res.cloudinary.com/hnthinh2909-library-codersx/image/upload/v1592032691/fpzuydj4adimheez0emf.jpg",
-      "isAdmin": true
+      "avatar": "http://res.cloudinary.com/hnthinh2909-library-codersx/image/upload/v1592046678/c1ytb88vmvedqowkammz.png",
+      "isAdmin": true,
+      "name": "Ethan",
+      "number": "0899236266"
     },
     {
       "name": "Trong Nhan",
