@@ -20,6 +20,14 @@
       "id": "JcG2XLOjH",
       "avatar": "uploads/7ef561263f2d31321872facc4a8b03a6",
       "isAdmin": true
+    },
+    {
+      "name": "Trong Nhan",
+      "email": "trongnhan@gmail.com",
+      "password": "$2b$10$NoPa75yFvLa2Xy64iaFCuO1CXMvs5gTImv.H78ORLUZJ5.1SvBRXO",
+      "number": "08991111111",
+      "isAdmin": true,
+      "id": "LPqx1rfBg"
     }
   ],
   "transactions": [

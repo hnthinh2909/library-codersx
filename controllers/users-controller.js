@@ -37,8 +37,8 @@ module.exports.createPost = (req, res) => {
 	cloudinary.uploader.upload(req.file.path, function(error, result) { avatarUrl = result}); 
 
 	req.body.avatar = avatarUrl.url;
-	console.log(req.body.avatar);
-
+	let admin = Boolean(req.body.isAdmin);
+	req.body.isAdmin = admin;
 	db.get("users").push(req.body).write();
 	res.redirect("/");
 }
