@@ -16,4 +16,8 @@ router.get("/editavatar", profileController.editAvatar);
 
 router.post("/editavatar", upload.single('avatar'), profileController.editAvatarPost);
 
+router.get("/changepassword", profileController.changePassword);
+
+router.post("/changepassword", profileController.changePasswordPost);
+
 module.exports = router;

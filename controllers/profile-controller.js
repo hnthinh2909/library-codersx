@@ -1,6 +1,9 @@
 const db = require("../db.js");
 const shortid = require('shortid');
 
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 var avatarUrl = "";
 
 var cloudinary = require('cloudinary').v2;
@@ -49,5 +52,31 @@ module.exports.editAvatarPost = function(req, res, next) {
 		.write();
 	}); 
 	// req.body.avatar = avatarUrl.url;
+	res.redirect("/profile");
+}
+
+module.exports.changePassword = function(req, res, next) {
+	res.render("profile/change-password");
+}
+
+module.exports.changePasswordPost = function(req, res, next) {
+	let oldPwd = req.body.oldpassword;
+	let newPwd = req.body.newpassword;
+
+	let user = db.get("users").find({id: req.signedCookies.userId}).value();
+
+	const hashOldPwd = bcrypt.hashSync(oldPwd, saltRounds);
+	const checkOldPwd = bcrypt.compareSync(oldPwd, user.password);
+	
+	if(checkOldPwd == false) {
+		res.render("profile/change-password", {
+			errors: ["Your current password is incorrect!"]
+		})
+		return;
+	}
+
+	const hashNewPwd = bcrypt.hashSync(newPwd, saltRounds);
+
+	db.get("users").find({id: req.signedCookies.userId}).assign({password: hashNewPwd}).write();
 	res.redirect("/profile");
 }
