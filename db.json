@@ -18,7 +18,7 @@
       "email": "hnthinh2909@gmail.com",
       "password": "$2b$10$hgjgujM6wTSNUc9xRui8J..rYOZAzlqbTDl1fopM9U0a3SbdOdCqW",
       "id": "JcG2XLOjH",
-      "avatar": "uploads/7ef561263f2d31321872facc4a8b03a6",
+      "avatar": "http://res.cloudinary.com/hnthinh2909-library-codersx/image/upload/v1592032691/fpzuydj4adimheez0emf.jpg",
       "isAdmin": true
     },
     {
@@ -27,23 +27,29 @@
       "password": "$2b$10$NoPa75yFvLa2Xy64iaFCuO1CXMvs5gTImv.H78ORLUZJ5.1SvBRXO",
       "number": "08991111111",
       "isAdmin": true,
-      "id": "LPqx1rfBg"
-    }
-  ],
-  "transactions": [
-    {
-      "userId": "JcG2XLOjH",
-      "bookId": "CeUMjcp9b",
-      "isComplete": "NOT YET",
-      "id": "d8wWx7Uu4"
+      "id": "LPqx1rfBg",
+      "avatar": "http://res.cloudinary.com/hnthinh2909-library-codersx/image/upload/v1592032691/fpzuydj4adimheez0emf.jpg"
     },
     {
-      "userId": "VkHIf5_MA",
-      "bookId": "mypojdq8l",
-      "isComplete": "not yet",
-      "id": "QZ0tYaY-x"
+      "name": "Thinh",
+      "email": "123@gmail.com",
+      "password": "$2b$10$rn6QRrVMJ1yK3kN8RcRiq.iqgYG9PYoqhZLeJqhubg/ccHBPyCjDi",
+      "number": "123",
+      "isAdmin": true,
+      "id": "Y3nx3oRNv",
+      "avatar": "http://res.cloudinary.com/hnthinh2909-library-codersx/image/upload/v1592032691/fpzuydj4adimheez0emf.jpg"
+    },
+    {
+      "name": "Ngoc Thinh",
+      "email": "ethan@gmail.com",
+      "password": "$2b$10$5VDQAQLXSOmGtxDIgoAO4e4k/4U0wfrZVaqIQzrSs0Wh.pZq.KFMW",
+      "number": "123",
+      "isAdmin": true,
+      "id": "SQyEvp7iY",
+      "avatar": "http://res.cloudinary.com/hnthinh2909-library-codersx/image/upload/v1592032691/fpzuydj4adimheez0emf.jpg"
     }
   ],
+  "transactions": [],
   "captcha": [
     "3x5EBn"
   ],
