@@ -1,11 +1,21 @@
 const shortid = require('shortid');
 const db = require("../db.js");
 
+var avatarUrl = "";
+
 const multer  = require('multer')
 const upload = multer({ dest: './public/uploads' })
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+
+var cloudinary = require('cloudinary').v2;
+
+cloudinary.config({ 
+  cloud_name: process.env.UPLOAD_CLOUD_NAME,
+  api_key: process.env.UPLOAD_API_KEY, 
+  api_secret: process.env.UPLOAD_API_SECRET
+});
 
 module.exports.index = (req, res) => {
 	res.render("users/index", {
@@ -19,9 +29,16 @@ module.exports.create = (req, res) => {
 
 module.exports.createPost = (req, res) => {
 	req.body.id = shortid.generate();
-	req.body.avatar = req.file.path.split("/").slice(1).join("/");
+	// req.body.avatar = req.file.path.split("/").slice(1).join("/");
 	const hash = bcrypt.hashSync(req.body.password, saltRounds);
 	req.body.password = hash;
+
+	const file = req.file.path;
+	cloudinary.uploader.upload(req.file.path, function(error, result) { avatarUrl = result}); 
+
+	req.body.avatar = avatarUrl.url;
+	console.log(req.body.avatar);
+
 	db.get("users").push(req.body).write();
 	res.redirect("/");
 }
