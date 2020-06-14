@@ -14,7 +14,7 @@
   "users": [
     {
       "email": "hnthinh2909@gmail.com",
-      "password": "$2b$10$LRsM4nM6xVl8aM2hM4RgAeGZlqY7kJ09Mc17dlO2jmX4Cv.3pDcF6",
+      "password": "$2b$10$c/THJ.SxTQhToAFeqlY1HeprlV2jb9SSJ082BUMjP6az/oDQaHhNS",
       "id": "JcG2XLOjH",
       "avatar": "http://res.cloudinary.com/hnthinh2909-library-codersx/image/upload/v1592046678/c1ytb88vmvedqowkammz.png",
       "isAdmin": true,
@@ -642,6 +642,15 @@
         "d3b26c2d-057f-4f63-9f3b-abc1a8aa9c64": 4,
         "e3d26719-26b1-4076-849d-fec7afb9d14e": 1
       }
+    },
+    {
+      "id": "Dz4D_quQu",
+      "cart": {
+        "d3b26c2d-057f-4f63-9f3b-abc1a8aa9c64": 1
+      }
+    },
+    {
+      "id": "29s5D14Nl"
     }
   ]
 }

@@ -57,8 +57,8 @@ module.exports.loginPost = function(req, res, next) {
 				to: user.email,
 				from: '18t1021303@husc.edu.vn',
 				subject: 'Sending with Twilio SendGrid is Fun',
-				text: 'and easy to do anywhere, even with Node.js',
-				html: '<h1>Easy to do anywhere, even with Node.js</strong>',
+				text: 'This mail to reset your password',
+				html: '<h1>Reset Password</h1><br><a href="https://localhost:3000/resetpassword">Click here to Reset your Password</a>',
 				};
 				sgMail.send(msg).then(() => {
 			    	console.log('Message sent')

@@ -22,6 +22,8 @@ const authRequire = require("./auth-middleware/login");
 const productsMiddleware = require("./auth-middleware/products-middleware.js");
 const sessionMiddleware = require("./session-middleware/session-middleware.js");
 const cartRoute = require("./routes/cart-route.js");
+const resetPwdRoute = require("./routes/reset-route.js");
+
 
 const port = 3000;
 
@@ -68,6 +70,8 @@ app.use("/transactions", authRequire.requireAuth, authRequire.isAdmin, transacti
 
 app.use("/cart", cartRoute);
 
+app.use("/resetpassword", resetPwdRoute);
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public/img', 'favicon.ico')));
 
@@ -76,6 +80,10 @@ app.listen(port, function() {
 	console.log("Server listening on port " + port)
 });
 
-
-// Thêm route cart to add product
+// Send mail to reset password.
 // Edit product with avatar, title, description
+
+// Cart on navbar display amount added.
+// When click Cart on navbar, it's will redirect to /cart and display products added to cart
+// Want to borrow you have to login.
+// In route /cart have a table to pay to borrow and after login and pay it's will send a mail about information of the bill.
