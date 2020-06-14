@@ -1,0 +1,16 @@
+extends ../layouts/common
+
+block content
+	h1.ml-5 Edit Products
+
+	form.ml-5(action="/products/edit" enctype="multipart/form-data" method="POST" )
+		.form-group
+			label(for="title") Title
+			input(type="hidden" name="id" value=id)
+			input#title.form-control.mb-4(type="text" name="title" placeholder= product.title style="width: 500px")
+			img(src=product.image)
+			label(for="image") Image 
+			input#image.form-control.mb-4(type="file" name="image" style="width: 500px; border: none")
+			label(for="description") Description
+			input#description.form-control(type="text" name="description" placeholder= product.description style="width: 500px")
+		button.btn.btn-primary Confirm

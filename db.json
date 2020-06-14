@@ -36,9 +36,9 @@
   "products": [
     {
       "id": "d3b26c2d-057f-4f63-9f3b-abc1a8aa9c64",
-      "title": "Ham - Cooked",
-      "image": "https://loremflickr.com/320/240",
-      "description": "ullamcorper augue a suscipit nulla elit ac nulla sed vel enim sit amet nunc viverra dapibus nulla"
+      "title": "Title",
+      "image": "http://res.cloudinary.com/hnthinh2909-library-codersx/image/upload/v1592158384/gysmmymgwjjtq9uhu853.png",
+      "description": "Des"
     },
     {
       "id": "e3d26719-26b1-4076-849d-fec7afb9d14e",

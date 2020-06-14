@@ -32,4 +32,5 @@ router.get("/search", authRequire.requireAuth, authRequire.isAdmin, usersControl
 // route delete
 router.get("/delete/:id", authRequire.requireAuth, authRequire.isAdmin, usersController.delete);
 
+
 module.exports = router;

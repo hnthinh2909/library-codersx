@@ -80,7 +80,7 @@ app.listen(port, function() {
 	console.log("Server listening on port " + port)
 });
 
-// Send mail to reset password.
+
 // Edit product with avatar, title, description
 
 // Cart on navbar display amount added.
