@@ -20,6 +20,8 @@ const loginControllers = require("./controllers/login-controller.js");
 
 const authRequire = require("./auth-middleware/login");
 const productsMiddleware = require("./auth-middleware/products-middleware.js");
+const sessionMiddleware = require("./session-middleware/session-middleware.js");
+const cartRoute = require("./routes/cart-route.js");
 
 const port = 3000;
 
@@ -28,11 +30,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(cookieParser("asdasdasd123"));
 
+
 // to set default direct of main folder
 app.set("view engine", "pug");
 app.set("views", "./views");
 
 app.use("/auth", loginRoute);
+app.use(sessionMiddleware);
+
 
 // route index
 app.get("/", productsMiddleware.productsMiddleware, function(req, res) {
@@ -49,6 +54,8 @@ app.get("/logout",
 	res.redirect("/auth/login")
 })
 
+
+
 app.use("/profile", authRequire.requireAuth, profileRoute);
 
 app.use("/products", productsMiddleware.productsMiddleware, productsRoute);
@@ -59,6 +66,8 @@ app.use("/users", usersRoute);
 
 app.use("/transactions", authRequire.requireAuth, authRequire.isAdmin, transactionRoute);
 
+app.use("/cart", cartRoute);
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public/img', 'favicon.ico')));
 
@@ -67,8 +76,6 @@ app.listen(port, function() {
 	console.log("Server listening on port " + port)
 });
 
-// Tạo session cho mỗi phiên dùng
+
 // Thêm route cart to add product
 // Edit product with avatar, title, description
-// Create a middleware for Products use res.locals.user = user to get db from db.json to display is logined or not.
-// Move transactions to dropdown, because it's just a route for admin so, we can hide with everyone from admin

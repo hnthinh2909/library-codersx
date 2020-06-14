@@ -634,5 +634,14 @@
       "image": "https://loremflickr.com/320/240",
       "description": "tristique est et tempus semper est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ipsum primis in"
     }
+  ],
+  "session": [
+    {
+      "id": "ryeYjBdiz",
+      "cart": {
+        "d3b26c2d-057f-4f63-9f3b-abc1a8aa9c64": 4,
+        "e3d26719-26b1-4076-849d-fec7afb9d14e": 1
+      }
+    }
   ]
 }
