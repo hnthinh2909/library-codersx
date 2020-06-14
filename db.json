@@ -22,31 +22,11 @@
       "number": "0899236266"
     },
     {
-      "name": "Trong Nhan",
-      "email": "trongnhan@gmail.com",
-      "password": "$2b$10$NoPa75yFvLa2Xy64iaFCuO1CXMvs5gTImv.H78ORLUZJ5.1SvBRXO",
-      "number": "08991111111",
-      "isAdmin": true,
-      "id": "LPqx1rfBg",
-      "avatar": "http://res.cloudinary.com/hnthinh2909-library-codersx/image/upload/v1592032691/fpzuydj4adimheez0emf.jpg"
-    },
-    {
-      "name": "Thinh",
-      "email": "123@gmail.com",
-      "password": "$2b$10$rn6QRrVMJ1yK3kN8RcRiq.iqgYG9PYoqhZLeJqhubg/ccHBPyCjDi",
-      "number": "123",
-      "isAdmin": true,
-      "id": "Y3nx3oRNv",
-      "avatar": "http://res.cloudinary.com/hnthinh2909-library-codersx/image/upload/v1592032691/fpzuydj4adimheez0emf.jpg"
-    },
-    {
       "name": "Ngoc Thinh",
-      "email": "ethan@gmail.com",
-      "password": "$2b$10$5VDQAQLXSOmGtxDIgoAO4e4k/4U0wfrZVaqIQzrSs0Wh.pZq.KFMW",
+      "email": "123@gmail.com",
+      "password": "$2b$10$GPLvy8zRbygaYI4fOEvr/uezTmW92VaoaQ/0i3pjVyLmkXjfvGC1u",
       "number": "123",
-      "isAdmin": true,
-      "id": "SQyEvp7iY",
-      "avatar": "http://res.cloudinary.com/hnthinh2909-library-codersx/image/upload/v1592032691/fpzuydj4adimheez0emf.jpg"
+      "id": "6f3WnNlbJ"
     }
   ],
   "transactions": [],

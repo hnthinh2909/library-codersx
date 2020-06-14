@@ -19,6 +19,7 @@ const profileRoute = require("./routes/profile-route.js");
 const loginControllers = require("./controllers/login-controller.js");
 
 const authRequire = require("./auth-middleware/login");
+const productsMiddleware = require("./auth-middleware/products-middleware.js");
 
 const port = 3000;
 
@@ -34,7 +35,7 @@ app.set("views", "./views");
 app.use("/auth", loginRoute);
 
 // route index
-app.get("/", authRequire.requireAuth, function(req, res) {
+app.get("/", productsMiddleware.productsMiddleware, function(req, res) {
 	res.render("library/index");
 })
 
@@ -50,7 +51,7 @@ app.get("/logout",
 
 app.use("/profile", authRequire.requireAuth, profileRoute);
 
-app.use("/products", authRequire.requireAuth, productsRoute);
+app.use("/products", productsMiddleware.productsMiddleware, productsRoute);
 
 app.use("/library", authRequire.requireAuth, libraryRoute);
 
@@ -66,6 +67,8 @@ app.listen(port, function() {
 	console.log("Server listening on port " + port)
 });
 
-// Lấy dữ liệu để thay đổi trong route profile
-// Dùng multer để lưu vị trí ảnh
-// Dùng cloudinary cho việc lưu ảnh
+// Tạo session cho mỗi phiên dùng
+// Thêm route cart to add product
+// Edit product with avatar, title, description
+// Create a middleware for Products use res.locals.user = user to get db from db.json to display is logined or not.
+// Move transactions to dropdown, because it's just a route for admin so, we can hide with everyone from admin

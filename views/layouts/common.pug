@@ -16,23 +16,23 @@ html
                         a.nav-item.nav-link.active(href='/') Home                   
                     li.nav-icon
                         a.nav-item.nav-link(href='/library/') Library
-                    li.nav-icon          
-                        a.nav-item.nav-link(href='/transactions/') Transactions
                     li.nav-icon
                         a.nav-item.nav-link(href='/products/') Products
-                    
+                    li.nav-icon
+                        a.nav-item.nav-link(href='/cart/') Cart
+            if !user
+                a.btn.btn-primary(href="/auth/login/") Login
+
             if user
                 span.navbar-text.mr-3= "Hi, " + user.name
                 .dropdown
                     a#dropdown01.nav-link.dropdown-toggle(href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Settings
                     .dropdown-menu
                         a.dropdown-item(href="/profile/") Profile
-                        if user.isAdmin                            
-                            a.dropdown-item(href="/users") Users
+                        if user.isAdmin                          
+                            a.dropdown-item(href="/users/") Users
+                            a.dropdown-item(href="/transactions/") Transactions
                         a.dropdown-item(href="/logout/") Logout
-                     
-                           
-        .alert.alert-danger.ml-5.text-center.mt-2(style="width: 550px") WARNING: If you're not admin, you can't use Transactions
         
         block content
             
