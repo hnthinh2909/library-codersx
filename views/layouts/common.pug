@@ -20,6 +20,8 @@ html
                         a.nav-item.nav-link(href='/products/') Products
                     li.nav-icon
                         a.nav-item.nav-link(href='/cart/') Cart
+                            if cart
+                                span= "(" + cart.countProduct + ")"
             if !user
                 a.btn.btn-primary(href="/auth/login/") Login
 

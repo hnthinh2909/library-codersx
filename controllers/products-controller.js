@@ -18,10 +18,11 @@ module.exports.index = function(req, res, next) {
 	let end = page * perPage; // (n-1)*x + x
 
 	let user = db.get("users").find({id: req.signedCookies.userId}).value()
-
+	let countCart = db.get("session").find({id: req.signedCookies.sessionId}).value();
 	res.render("products/index", {
 		products: db.get("products").drop(start).take(perPage).value(),
-		user
+		user,
+		count: countCart.countProduct
 	})
 }
 

@@ -23,7 +23,7 @@ const productsMiddleware = require("./auth-middleware/products-middleware.js");
 const sessionMiddleware = require("./session-middleware/session-middleware.js");
 const cartRoute = require("./routes/cart-route.js");
 const resetPwdRoute = require("./routes/reset-route.js");
-
+const countProductMiddleware = require("./session-middleware/countproduct-middleware.js");
 
 const port = 3000;
 
@@ -39,7 +39,7 @@ app.set("views", "./views");
 
 app.use("/auth", loginRoute);
 app.use(sessionMiddleware);
-
+app.use(countProductMiddleware);
 
 // route index
 app.get("/", productsMiddleware.productsMiddleware, function(req, res) {
@@ -80,8 +80,6 @@ app.listen(port, function() {
 	console.log("Server listening on port " + port)
 });
 
-
-// Edit product with avatar, title, description
 
 // Cart on navbar display amount added.
 // When click Cart on navbar, it's will redirect to /cart and display products added to cart
