@@ -12,12 +12,15 @@ block content
     table.table.ml-5.mt-2(style="width: 1500px")
         thead.thead-dark
             tr
+                th(scope='col') Book cover
                 th(scope='col') Title
                 th(scope='col') User
                 th(scope='col') Action
         tbody
             each transaction in transactions
                 tr
+                    td 
+                        img(style="width: 150px" src=transaction.image)
                     td= transaction.bookTitle
                     td= transaction.userName
                     td

@@ -6,15 +6,12 @@ module.exports.index = (req, res) => {
 	let books = db.get("books").value();
 	let transactions = db.get("transactions").value();
 
-    let changeTrans = transactions.map(trans => {
-    let book = books.find(book => book.id === trans.bookId);
-    let user = users.find(user => user.id === trans.userId);
-    let godId = transactions.find(id => id.id === trans.id);
-    return {  bookTitle: book.name, userName: user.name, id: godId.id };
-  		});
+    // let changeTrans = transactions.map(trans => {
+    // let book = books.find(book => book.id === trans.bookId);
+    // let user = users.find(user => user.id === trans.userId);
+    // let godId = transactions.find(id => id.id === trans.id);
 	res.render("transactions/index", {
-		transactions: changeTrans,
-		books, users
+		transactions: transactions
 	});
 }
 
