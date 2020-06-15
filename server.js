@@ -81,7 +81,5 @@ app.listen(port, function() {
 });
 
 
-// Cart on navbar display amount added.
-// When click Cart on navbar, it's will redirect to /cart and display products added to cart
 // Want to borrow you have to login.
 // In route /cart have a table to pay to borrow and after login and pay it's will send a mail about information of the bill.

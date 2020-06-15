@@ -1,12 +1,21 @@
 const db = require("../db.js");
 var countProduct = 0;
+let productInCart = [];
 
 module.exports.index = function(req, res, next) {
-	// db.get("session")
-	//   .find({id: req.signedCookies.sessionId})
-	//   .push({countProduct: countProduct})
-	//   .write();
-	res.render("cart/index");
+	let product = db.get("session").find({id: req.signedCookies.sessionId}).value();
+	if(!product.cart) {
+		res.redirect("/products");
+	}
+	let listProduct = Object.keys(product.cart);
+	for(let i = 0; i<listProduct.length; i++) {
+		productInCart.push(db.get("products").find({id: listProduct[i]}).value());
+	}
+	// console.log(productInCart);
+
+	res.render("cart/index", {
+		products: productInCart
+	});
 }
 
 module.exports.addToCart = function(req, res, next) {
@@ -14,7 +23,6 @@ module.exports.addToCart = function(req, res, next) {
 	let sessionId = req.signedCookies.sessionId;
 
 	let countSession = db.get("session").find({id: req.signedCookies.sessionId}).value();
-	// console.log(Object.values(countSession.cart));
 	
 	if(!sessionId) {
 		res.redirect("/products");
