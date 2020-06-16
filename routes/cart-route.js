@@ -3,8 +3,9 @@ const router = express.Router();
 
 const cartController = require("../controllers/cart-controller.js");
 const authRequire = require("../auth-middleware/login");
+const productMiddleware = require("../auth-middleware/products-middleware.js");
 
-router.get("/", cartController.index);
+router.get("/", productMiddleware.productsMiddleware, cartController.index);
 
 router.post("/", authRequire.requireAuth, cartController.indexPost);
 

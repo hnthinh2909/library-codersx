@@ -18,7 +18,8 @@ module.exports.index = function(req, res, next) {
 		// console.log(productInCart);
 		console.log(productInCart[0].id);
 	res.render("cart/index", {
-		products: productInCart
+		products: productInCart, 
+		// csrfToken: req.csrfToken() 
 	});
 }
 

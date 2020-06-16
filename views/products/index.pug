@@ -10,16 +10,17 @@ block content
             button(class="btn btn-primary ml-2") Search
 
     .ml-4.mr-4.row
-        each product in products
-            .col-sm-6.col-md-4.col-lg-3
-                .card.mb-3
-                    img.card-img-top(src=product.image)
-                    .card-body
-                        h5.card-title(style="font-weight: 700")= product.title
-                        p.card-text= product.description
-                        a.btn.btn-primary.mr-2(href='/cart/add/' + product.id) Add to cart
-                        //- if user.isAdmin
-                        //-     a.btn.btn-primary(href="/products/edit/" + product.id) Edit
+        if products
+            each product in products
+                .col-sm-6.col-md-4.col-lg-3
+                    .card.mb-3
+                        img.card-img-top(src=product.image)
+                        .card-body
+                            h5.card-title(style="font-weight: 700")= product.title
+                            p.card-text= product.description
+                            a.btn.btn-primary.mr-2(href='/cart/add/' + product.id) Add to cart
+                            //- if user.isAdmin
+                            //-     a.btn.btn-primary(href="/products/edit/" + product.id) Edit
 
     nav(aria-label='Page navigation example')
         ul.pagination.justify-content-center

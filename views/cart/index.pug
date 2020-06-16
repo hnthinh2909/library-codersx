@@ -4,7 +4,8 @@ block content
     h1.ml-5 Cart
     
     form(action="/cart/" method="POST" enctype="multipart/form-data")
-        .form-group
+        //- input(type='hidden', name='_csrf', value="{{csrfToken}}")
+        .form-group           
             each product in products
                 ul.list-unstyled.ml-5.mr-5
                     li.media

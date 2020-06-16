@@ -1,13 +1,14 @@
-require('dotenv').config()
+require('dotenv').config();
 const express = require('express');
 const app = express();
+const csurf = require('csurf');
 
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const csrf = require('csurf');
 
-const favicon = require('serve-favicon')
-const path = require('path')
-const cookieParser = require('cookie-parser')
-
+const favicon = require('serve-favicon');
+const path = require('path');
 
 const productsRoute = require("./routes/products-route.js");
 const libraryRoute = require("./routes/library-route.js");
@@ -25,13 +26,15 @@ const cartRoute = require("./routes/cart-route.js");
 const resetPwdRoute = require("./routes/reset-route.js");
 const countProductMiddleware = require("./session-middleware/countproduct-middleware.js");
 
+// const csrfProtection = csrf({ cookie: true });
+
 const port = 3000;
 
 // to read file from db.json
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(cookieParser("asdasdasd123"));
-
+// app.use(csrf({ cookie: true }))
 
 // to set default direct of main folder
 app.set("view engine", "pug");
