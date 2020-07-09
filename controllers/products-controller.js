@@ -23,7 +23,7 @@ module.exports.index = function(req, res, next) {
 	res.render("products/index", {
 		products: db.get("products").drop(start).take(perPage).value(),
 		user,
-		count: countCart.countProduct
+		count: countCart
 	})
 }
 

@@ -1,11 +1,9 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const csurf = require('csurf');
 
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const csrf = require('csurf');
 
 const favicon = require('serve-favicon');
 const path = require('path');
@@ -84,5 +82,10 @@ app.listen(port, function() {
 });
 
 
-// Want to borrow you have to login.
-// In route /cart have a table to pay to borrow and after login and pay it's will send a mail about information of the bill.
+
+/*
+1. Fix db.get -- done
+2. api
+3. add mongodb cloud with mongoose
+4. deploy heroku
+*/

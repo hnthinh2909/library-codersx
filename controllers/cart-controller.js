@@ -1,26 +1,26 @@
 const db = require("../db.js");
 var countProduct = 0;
 let productInCart = [];
-let varLength = 0;
 
-module.exports.index = function(req, res, next) {
+module.exports.index = function(req, res) {
 	let product = db.get("session").find({id: req.signedCookies.sessionId}).value();
 	if(!product.cart) {
 		res.redirect("/products");
 	}
-
-	let listProduct = Object.keys(product.cart);
-	if(productInCart.length < listProduct.length) {
-		for(let i = 0; i<listProduct.length; i++) {
-			productInCart.push(db.get("products").find({id: listProduct[i]}).value());
+	else {
+		let listProduct = Object.keys(product.cart);
+		if(productInCart.length < listProduct.length) {
+			for(let i = 0; i<listProduct.length; i++) {
+				productInCart.push(db.get("products").find({id: listProduct[i]}).value());
+			}
 		}
+			console.log(productInCart);
+			console.log(productInCart[0].id);
+		res.render("cart/index", {
+			products: productInCart, 
+			// csrfToken: req.csrfToken() 
+		});
 	}
-		// console.log(productInCart);
-		console.log(productInCart[0].id);
-	res.render("cart/index", {
-		products: productInCart, 
-		// csrfToken: req.csrfToken() 
-	});
 }
 
 module.exports.indexPost = function(req, res) {
