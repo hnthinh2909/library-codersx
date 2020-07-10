@@ -2,6 +2,9 @@ const db = require("../db.js");
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
+const mongoose = require("mongoose");
+const Users = require("../models/users.js");
+
 module.exports.index = function(req, res) {
 	res.render("users/reset-password");
 }
@@ -11,9 +14,6 @@ module.exports.indexPost = function(req, res) {
 	const hashPwd = bcrypt.hashSync(newPwd, saltRounds);
 
 	let email = req.body.email;
-	db.get("users")
-	  .find({email: email})
-	  .assign({password: hashPwd})
-	  .write();
+	User.updateOne({_id: id}, {$set: {password: hashPwd}}).exec();
 	res.redirect("/auth/login");
 }

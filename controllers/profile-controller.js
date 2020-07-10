@@ -1,6 +1,9 @@
 const db = require("../db.js");
 const shortid = require('shortid');
 
+const mongoose = require("mongoose");
+const Users = require("../models/users.js");
+
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
@@ -15,15 +18,17 @@ cloudinary.config({
 });
 
 
-module.exports.index = function(req, res, next) {
-	let user = db.get("users").find({id:req.signedCookies.userId}).value();
-	let avatar = user.avatar;
-	let name = user.name;
-	let email = user.email;
-	let phone = user.number;
-	res.render("profile/index", {
-		name, email, avatar, phone
-	});
+module.exports.index = function(req, res) {
+	// let user = db.get("users").find({id:req.signedCookies.userId}).value();
+	let data = Users.find({_id:req.signedCookies.userId}).exec().then(docs => {
+		let avatar = docs[0].avatar;
+		let name = docs[0].name;
+		let email = docs[0].email;
+		let phone = docs[0].phonenumber;
+		res.render("profile/index", {
+			name, email, avatar, phone
+		});
+	}).catch(err => console.log(err));
 }
 
 module.exports.editInfo = function(req, res, next) {
@@ -31,10 +36,8 @@ module.exports.editInfo = function(req, res, next) {
 }
 
 module.exports.editInfoPost = function(req, res, next) {
-	db.get('users')
-	  .find({id: req.signedCookies.userId})
-	  .assign({ name: req.body.name, number: req.body.number})
-	  .write();
+	Users.updateOne({_id: req.signedCookies.userId}, {$set: {name: req.body.name}})
+		 .exec();
 	res.redirect("/profile");
 }
 
@@ -46,12 +49,9 @@ module.exports.editAvatarPost = function(req, res, next) {
 	const file = req.file.path;
 	cloudinary.uploader.upload(req.file.path, function(error, result) { 
 		req.body.avatar= result.url; 
-		db.get("users")
-		.find({id: req.signedCookies.userId})
-		.assign({avatar: req.body.avatar})
-		.write();
+		Users.updateOne({_id: req.signedCookies.userId}, {$set: {avatar: req.body.avatar}})
+			 .exec().then(result => console.log(result)).catch(err => console.log(err));
 	}); 
-	// req.body.avatar = avatarUrl.url;
 	res.redirect("/profile");
 }
 
@@ -63,20 +63,20 @@ module.exports.changePasswordPost = function(req, res, next) {
 	let oldPwd = req.body.oldpassword;
 	let newPwd = req.body.newpassword;
 
-	let user = db.get("users").find({id: req.signedCookies.userId}).value();
+	Users.find({_id: req.signedCookies.userId}).exec().then(docs => {
 
-	const hashOldPwd = bcrypt.hashSync(oldPwd, saltRounds);
-	const checkOldPwd = bcrypt.compareSync(oldPwd, user.password);
-	
-	if(checkOldPwd == false) {
-		res.render("profile/change-password", {
-			errors: ["Your current password is incorrect!"]
-		})
-		return;
-	}
+		const hashOldPwd = bcrypt.hashSync(oldPwd, saltRounds);
+		const checkOldPwd = bcrypt.compareSync(oldPwd, docs[0].password);
+		
+		if(checkOldPwd == false) {
+			res.render("profile/change-password", {
+				errors: ["Your current password is incorrect!"]
+			})
+			return;
+		}
+		const hashNewPwd = bcrypt.hashSync(newPwd, saltRounds);
 
-	const hashNewPwd = bcrypt.hashSync(newPwd, saltRounds);
-
-	db.get("users").find({id: req.signedCookies.userId}).assign({password: hashNewPwd}).write();
-	res.redirect("/profile");
+		Users.updateOne({_id: req.signedCookies.userId}, {$set: {password: hashNewPwd}}).exec();
+		res.redirect("/profile");
+	})
 }

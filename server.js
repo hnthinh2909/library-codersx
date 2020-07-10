@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
+const mongoose = require("mongoose");
 
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -26,6 +27,12 @@ const countProductMiddleware = require("./session-middleware/countproduct-middle
 
 // const csrfProtection = csrf({ cookie: true });
 
+mongoose.connect("mongodb+srv://admin:"+process.env.MONGO_ATLAS_PW+"@cluster0-03npr.mongodb.net/library?retryWrites=true&w=majority", 
+{
+	useUnifiedTopology: true,
+	useNewUrlParser: true
+});
+
 const port = 3000;
 
 // to read file from db.json
@@ -34,6 +41,7 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.use(cookieParser("asdasdasd123"));
 // app.use(csrf({ cookie: true }))
 
+
 // to set default direct of main folder
 app.set("view engine", "pug");
 app.set("views", "./views");
@@ -41,9 +49,9 @@ app.set("views", "./views");
 app.use("/auth", loginRoute);
 app.use(sessionMiddleware);
 app.use(countProductMiddleware);
-
+app.use(authRequire.getDataUser);
 // route index
-app.get("/", productsMiddleware.productsMiddleware, function(req, res) {
+app.get("/", authRequire.getDataUser, productsMiddleware.productsMiddleware, function(req, res) {
 	res.render("library/index");
 })
 
@@ -61,7 +69,7 @@ app.get("/logout",
 
 app.use("/profile", authRequire.requireAuth, profileRoute);
 
-app.use("/products", productsMiddleware.productsMiddleware, productsRoute);
+app.use("/products", authRequire.getDataUser, productsMiddleware.productsMiddleware, productsRoute);
 
 app.use("/library", authRequire.requireAuth, libraryRoute);
 
@@ -69,7 +77,7 @@ app.use("/users", usersRoute);
 
 app.use("/transactions", authRequire.requireAuth, authRequire.isAdmin, transactionRoute);
 
-app.use("/cart", cartRoute);
+app.use("/cart", authRequire.getDataUser, cartRoute);
 
 app.use("/resetpassword", resetPwdRoute);
 
@@ -84,8 +92,6 @@ app.listen(port, function() {
 
 
 /*
-1. Fix db.get -- done
-2. api
-3. add mongodb cloud with mongoose
+Product, cart, login in products and home is not display
 4. deploy heroku
 */

@@ -1,41 +1,54 @@
 const shortid = require('shortid');
 const db = require("../db.js");
 
-module.exports.index = (req, res) => {
-	let users = db.get("users").value();
-	let books = db.get("books").value();
-	let transactions = db.get("transactions").value();
+const mongoose = require("mongoose");
+const Transactions = require("../models/transactions.js");
+const Users =require("../models/users.js");
+const Books = require("../models/books.js");
 
-    // let changeTrans = transactions.map(trans => {
-    // let book = books.find(book => book.id === trans.bookId);
-    // let user = users.find(user => user.id === trans.userId);
-    // let godId = transactions.find(id => id.id === trans.id);
-	res.render("transactions/index", {
-		transactions: transactions
-	});
+
+module.exports.index = (req, res) => {
+	// let transactions = db.get("transactions").value();
+	Transactions.find()
+		.exec()
+		.then(docs => {
+			res.render("transactions/index", {
+				transactions: docs
+			});
+		})
+		.catch(err => console.log(err));
 }
 
 module.exports.create = (req, res) => {
-	let users = db.get("users").value();
-	let books = db.get("books").value();
-	res.render("transactions/create", {
-		users, books
-	});
+	Users.find()
+		.exec()
+		.then(users => {
+			Books.find()
+			.exec()
+			.then(books => {
+				res.render("transactions/create", {
+					users, books
+				});
+			})
+			.catch(err => console.log(err));
+		})
+		.catch(err => console.log(err));
 }
 
 module.exports.createPost = (req,res) => {
 	req.body.id = shortid.generate();
-	db.get("transactions")
- 	  .push(req.body)
- 	  .write();
+	const newTransaction = new Transactions({
+		_id: new mongoose.Types.ObjectId,
+		user: req.body.userId,
+		book: req.body.bookId
+	});
+	newTransaction.save().then(result => console.log(result)).catch(err => console.log(err));
  	res.redirect("/transactions");
 }
 
 module.exports.delete = (req, res) => {
 	let id = req.params.id;
-	db.get("transactions")
-	  .remove({id: id})
-	  .write()
+	Transactions.remove({_id: id}).exec();
 	res.redirect("back");
 }
 

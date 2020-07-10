@@ -19,10 +19,10 @@ block content
             each book in books
                 tr
                     td= book.name
-                    td= book.des
+                    td= book.description
                     td
-                        a(href="/library/edit/" + book.id) Edit
+                        a(href="/library/edit/" + book._id) Edit
                         span &nbsp;
                         span &nbsp;
                         span &nbsp;
-                        a(href="/library/delete/" + book.id) Delete
+                        a(href="/library/delete/" + book._id) Delete

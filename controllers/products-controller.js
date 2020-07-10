@@ -2,6 +2,11 @@ const db = require("../db.js");
 const cookieParser = require('cookie-parser');
 const shortid = require('shortid');
 
+const mongoose = require("mongoose");
+const Products = require("../models/products.js");
+const Session = require("../models/session.js");
+const Users = require("../models/users.js");
+
 var cloudinary = require('cloudinary').v2;
 
 cloudinary.config({ 
@@ -17,13 +22,16 @@ module.exports.index = function(req, res, next) {
 	let start = (page - 1) * perPage; // (n-1)*x
 	let end = page * perPage; // (n-1)*x + x
 
-	let user = db.get("users").find({id: req.signedCookies.userId}).value()
-	let countCart = db.get("session").find({id: req.signedCookies.sessionId}).value();
-
-	res.render("products/index", {
-		products: db.get("products").drop(start).take(perPage).value(),
-		user,
-		count: countCart
+	Products.find().limit(perPage).skip(end).exec().then(product => {
+		Users.find().exec().then(user => {
+			Session.find().exec().then(countCart => {
+				res.render("products/index", {
+					products: product,
+					user,
+					count: countCart
+				})	
+			})
+		})
 	})
 }
 

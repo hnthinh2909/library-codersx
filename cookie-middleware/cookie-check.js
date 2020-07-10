@@ -1,5 +1,3 @@
-const db = require("../db.js");
-
 var count = 1;
 module.exports.checkCookie = function(req, res, next) {
 	res.cookie("cookie", count);
